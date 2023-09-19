@@ -1,21 +1,33 @@
 //rfc + enter
+
+import Cabecalho from "./components/Cabecalho";
+import Conteudo from "./components/Conteudo";
+import Rodape from "./components/Rodape";
+import reactLogo from "./assets/react.svg";
+import { Outlet } from "react-router-dom";
+
 export default function App() {
+
+  let reactLogoAlt = "React Logo";
+
+  //Lista de links redes sociais
+  let listaLinks =[<li>Github</li>, <li>Twitter</li>, <li>Reddit</li>];
+
   return (
     <>
       <div className="container">
 
         <Cabecalho/>
 
-        <section>
-          {/*Isso é um comentário*/}
-          <p><a href="/">Home Page</a></p>
+        {/* Como estamos lidando com um conteúdo dinâmico, usamos o {} */}
+        {/* <img src={reactLogo} alt={reactLogoAlt}/> */}
 
-            <button onClick={() => alert("Hello World!")}>Click Me!</button>
-        </section>
+        {/* <Conteudo reactLogoProps={reactLogo} reactLogoAltProps={reactLogoAlt}/> */}
 
-        <footer>
-          <p>&copy; 2021, Vite.js and React</p>
-        </footer>
+        <Outlet/>
+
+        <Rodape listaProps={listaLinks}/>
+
       </div>
     </>
   )
