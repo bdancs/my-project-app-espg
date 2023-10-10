@@ -1,24 +1,22 @@
 import { useEffect, useState } from "react";
+
 import { Link } from "react-router-dom";
-import styles from "./Produtos.module.css"
-import {AiFillEdit as Editar} from "react-icons/ai"
-import {MdDeleteForever as Excluir} from "react-icons/md"
+import styles from "./Produtos.module.css";
+import { AiFillEdit as Editar } from "react-icons/ai";
+import { MdDeleteForever as Excluir } from "react-icons/md";
 
 export default function Produtos() {
-
   document.title = "Lista de Produtos";
 
   const [listaProdutosLocal, setListaProdutosLocal] = useState([{}]);
 
-
-  
   //Estrutura que recebe a lista de produtos externa e repassa para uma lista local.
-  useEffect(()=>{  
+  useEffect(() => {
     fetch("http://localhost:5000/produtos")
-      .then((response)=> response.json())
-      .then((response)=> setListaProdutosLocal(response))
-      .catch((error)=> console.log(error));
-  },[]);
+      .then((response) => response.json())
+      .then((response) => setListaProdutosLocal(response))
+      .catch((error) => console.log(error));
+  }, []);
 
   return (
     <div>
