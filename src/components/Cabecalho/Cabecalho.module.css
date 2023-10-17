@@ -27,14 +27,14 @@
                 & a{
                     text-decoration: none;
                     color: #fff;
-                    display: inline-block;
+                    display: block;
                     font-weight: bold;
                     padding: 30px 10px;
                     transition: background-color ease-out 300ms, color ease-out 300s;
 
                     &:hover{
                         background-color: pink;
-                        color: #444444;
+                        color: #fff;
                     }
                 }
             }
