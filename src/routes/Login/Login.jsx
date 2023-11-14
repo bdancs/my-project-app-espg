@@ -14,7 +14,7 @@ export default function Login() {
         senha: ""
     })
 
-    //O 'async' é para deixar ele(quem? não sei) assíncrono
+    //O 'async' é para deixar ele(quem? não sei) assíncrono > TONRA A FUNÇÃO MAIS MALEÁVEL
     const handleChange = async (e)=>{
 
         //Destructuring
@@ -49,6 +49,8 @@ export default function Login() {
        
         e.preventDefault();
 
+        //Está variável vai se transformar em um objeto que será retornado junto com o token do usuário, 
+        //para que os dados pertinentes sejam apresentados na tela.
         let user;
 
         try {
@@ -79,6 +81,15 @@ export default function Login() {
                 if(user){
                     //Redirecionando o usuário para HOME!
                     setMsgstatus("Login realizado com SUCESSO!!");
+
+                    //Gerar o token do usuário na sessiontStorage.
+                    //Vamos utilizar Math.randon com uma string alfanumérica.
+                    const token = Math.random().toString(16).substring(2) + Math.random().toString(16).substring(2);
+
+                    //Armazenar o token na sessionStorage
+                    //Para isso vamos utilizar o método o setItem(chave, valor).
+                    //Precisamos lembrar que tudo o que adicionamos na sessionStorage e ou localStorage deve ser do tipo String. Neste caso o token é uma String então não existe a necessidade de realizar uma conversão por exemplo utilizando a função JSON.stringfy(objeto).
+                    sessionStorage.setItem("token-user", token);
                     
                     setTimeout(()=>{
 
@@ -88,7 +99,6 @@ export default function Login() {
                 
                 }else{
                     //Limpando o formulário caso a validação falhe!
-                    
                     setMsgstatus("Usuário e/ou Senha incorretos!");
                     
                     setTimeout(()=>{
