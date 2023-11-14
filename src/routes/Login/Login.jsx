@@ -62,7 +62,7 @@ export default function Login() {
 
                 const users = await response.json();
 
-                console.log(users);
+                //console.log(users); //Mostra todos os usuários após o login ter sucesso, mas antes de encaminhar para a aoutra página
                 
                 //Fazendo a recuperação
                 for (let x = 0; x < users.length; x++) {
@@ -90,6 +90,9 @@ export default function Login() {
                     //Para isso vamos utilizar o método o setItem(chave, valor).
                     //Precisamos lembrar que tudo o que adicionamos na sessionStorage e ou localStorage deve ser do tipo String. Neste caso o token é uma String então não existe a necessidade de realizar uma conversão por exemplo utilizando a função JSON.stringfy(objeto).
                     sessionStorage.setItem("token-user", token);
+
+                    //Adicionando o objeto do usuário na sessionStorage.
+                    sessionStorage.setItem("user-obj", JSON.stringify(user));
                     
                     setTimeout(()=>{
 
